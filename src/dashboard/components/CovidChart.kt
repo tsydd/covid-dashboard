@@ -17,6 +17,7 @@ data class ReactChartData(
 )
 
 interface CovidChartStateProps : RProps {
+    var title: String
     var type: String
     var data: ReactChartData
 }
@@ -61,6 +62,9 @@ class CovidChart(props: CovidChartProps) : RComponent<CovidChartProps, RState>(p
                 options = Options(
                     animation = AnimationOptions(
                         duration = 0
+                    ),
+                    title = TitleOptions(
+                        text = props.title
                     )
                 )
             )
@@ -70,7 +74,6 @@ class CovidChart(props: CovidChartProps) : RComponent<CovidChartProps, RState>(p
     override fun RBuilder.render() {
         canvas {
             ref = chartRef
-//            attrs.height = "50px"
         }
     }
 }

@@ -21,6 +21,7 @@ private val getData: (State) -> ReactChartData =
         State::selectedDataTypes,
         { dailySelectedSequences(it) },
         { offsetByKey(it) },
+        State::translation,
         ::buildChartData
     )
 
@@ -29,6 +30,7 @@ val covidDailyChart: RClass<RProps> =
         { state, _ ->
             type = "bar"
             data = getData(state)
+            title = state.translation.dailyChartTitle
         },
         { _, _ -> }
     )(CovidChart::class.js.unsafeCast<RClass<CovidChartProps>>())

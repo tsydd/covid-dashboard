@@ -1,5 +1,6 @@
 package dashboard.containers
 
+import dashboard.L10n
 import dashboard.components.*
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType
@@ -22,7 +23,8 @@ fun buildChartData(
     dates: List<String>,
     dataTypes: CovidData<Boolean>,
     sequences: CovidData<Map<String, List<Int>>>,
-    offsetByKey: Map<String, Int>
+    offsetByKey: Map<String, Int>,
+    translation: L10n
 ): ReactChartData {
     val allOffsets = sequences.confirmed.keys.asSequence()
         .map { offsetByKey[it] ?: 0 }
@@ -41,7 +43,7 @@ fun buildChartData(
                 .map { (key, values) ->
                     val offset = offsetByKey[key] ?: 0
                     ReactDataSet(
-                        label = "${dataType.label} ($key)",
+                        label = "${dataType.translate(translation)} ($key)",
                         data = values.drop(offset)
                     )
                 }
@@ -59,6 +61,7 @@ private val getData: (State) -> ReactChartData =
         State::selectedDataTypes,
         { selectedSequences(it) },
         { offsetByKey(it) },
+        State::translation,
         ::buildChartData
     )
 
@@ -67,6 +70,7 @@ val covidChart: RClass<RProps> =
         { state, _ ->
             type = "line"
             data = getData(state)
+            title = state.translation.chartTitle
         },
         { _, _ -> }
     )(CovidChart::class.js.unsafeCast<RClass<CovidChartProps>>())

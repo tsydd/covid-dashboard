@@ -1,10 +1,12 @@
 package dashboard.reducers
 
+import dashboard.L10n
 import dashboard.models.CovidData
 import dashboard.RegionData
 import dashboard.components.Sort
 import dashboard.components.SortColumn
 import dashboard.components.SortOrder
+import dashboard.getL10n
 import dashboard.models.Align
 import redux.RAction
 import redux.combineReducers
@@ -26,7 +28,8 @@ data class State(
         true
     ),
     val align: Align = Align.FIRST_CASE,
-    val windowSize: Size = Size(window.innerWidth, window.innerHeight)
+    val windowSize: Size = Size(window.innerWidth, window.innerHeight),
+    val translation: L10n = getL10n()
 )
 
 fun combinedReducers() = combineReducers<State, RAction>(
@@ -39,6 +42,7 @@ fun combinedReducers() = combineReducers<State, RAction>(
         "selectedKeys" to ::selectedKeys,
         "selectedDataTypes" to ::selectedDataTypes,
         "align" to ::align,
-        "windowSize" to ::windowSize
+        "windowSize" to ::windowSize,
+        "translation" to ::translation
     )
 )

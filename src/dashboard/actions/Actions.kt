@@ -21,3 +21,5 @@ class ToggleSelectedDataType(val dataType: CovidDataType) : RAction
 class UpdateAlign(val align: Align) : RAction
 
 class ResizeWindow(val width: Int, val height: Int) : RAction
+
+class SwitchLanguage(val language: String) : RAction

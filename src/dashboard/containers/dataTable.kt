@@ -16,6 +16,7 @@ private interface DataTableStateProps : RProps {
     var groupByCountry: Boolean
     var entries: Array<TableEntry>
     var sort: Sort
+    var translation: L10n
 }
 
 private interface DataTableDispatchProps : RProps {
@@ -84,6 +85,7 @@ val dataTable: RClass<RProps> =
             groupByCountry = state.groupByCountry
             entries = getEntries(state)
             sort = state.sortDataTable
+            translation = state.translation
         },
         { dispatch, _ ->
             onToggleColumn = { columnName -> dispatch(ToggleSort(columnName)) }

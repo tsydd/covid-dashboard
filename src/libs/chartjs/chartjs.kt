@@ -17,8 +17,14 @@ class AnimationOptions(
     val duration: Int
 )
 
+class TitleOptions(
+    val display: Boolean = true,
+    val text: String
+)
+
 class Options(
     val animation: AnimationOptions,
+    val title: TitleOptions? = undefined,
     val aspectRatio: Int = 7
 )
 

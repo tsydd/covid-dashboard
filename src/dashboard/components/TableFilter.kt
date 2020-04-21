@@ -1,5 +1,6 @@
 package dashboard.components
 
+import dashboard.L10n
 import kotlinx.html.InputType
 import kotlinx.html.js.onChangeFunction
 import react.*
@@ -13,6 +14,7 @@ interface TableFilterProps : RProps {
     var onChangeFilter: (String) -> Unit
     var groupByCountry: Boolean
     var onToggleGroupByCountry: () -> Unit
+    var translation: L10n
 }
 
 class TableFilter(props: TableFilterProps) : RComponent<TableFilterProps, RState>(props) {
@@ -23,7 +25,7 @@ class TableFilter(props: TableFilterProps) : RComponent<TableFilterProps, RState
                 input(type = InputType.search, classes = "form-control") {
                     attrs {
                         value = props.filter
-                        placeholder = "Search Country"
+                        placeholder = props.translation.searchCountry
                         onChangeFunction = { event ->
                             props.onChangeFilter(event.target!!.asDynamic().value as String)
                         }
@@ -40,7 +42,7 @@ class TableFilter(props: TableFilterProps) : RComponent<TableFilterProps, RState
                             }
                         }
                     }
-                    +"Group by Country"
+                    +props.translation.groupByCountry
                 }
             }
         }

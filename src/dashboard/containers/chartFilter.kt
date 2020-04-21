@@ -32,6 +32,7 @@ val chartFilter: RClass<RProps> =
             align = state.align
             include = state.selectedDataTypes
             total = selectedSeriesSums(state)
+            translation = state.translation
         },
         { dispatch, _ ->
             onToggle = { series -> dispatch(ToggleSelectedDataType(series)) }

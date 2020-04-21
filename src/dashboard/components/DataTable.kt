@@ -1,5 +1,7 @@
 package dashboard.components
 
+import dashboard.L10n
+import dashboard.Translation
 import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent
@@ -42,50 +44,56 @@ interface DataTableProps : RProps {
     var groupByCountry: Boolean
     var entries: Array<TableEntry>
     var sort: Sort
+    var translation: L10n
     var onToggleColumn: (SortColumn) -> Unit
     var onToggleRow: (String) -> Unit
 }
 
 class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(props) {
     override fun RBuilder.render() {
-        div("covid-table-wrapper") {
-            table("table table-hover") {
-                thead {
-                    tr {
-                        th {
-                            attrs.onClickFunction = { props.onToggleColumn(SortColumn.NAME) }
-                            if (props.groupByCountry) {
-                                +"Country"
-                            } else {
-                                +"Country/Region"
+        div {
+            div("table-responsive covid-table-wrapper") {
+                table("table table-hover") {
+                    thead {
+                        tr {
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.NAME) }
+                                if (props.groupByCountry) {
+                                    +props.translation.country
+                                } else {
+                                    +props.translation.countryRegion
+                                }
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.CONFIRMED) }
+                                +props.translation.confirmed
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.DEATH) }
+                                +props.translation.deaths
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.RECOVERED) }
+                                +props.translation.recovered
                             }
                         }
-                        th {
-                            attrs.onClickFunction = { props.onToggleColumn(SortColumn.CONFIRMED) }
-                            +"Confirmed"
-                        }
-                        th {
-                            attrs.onClickFunction = { props.onToggleColumn(SortColumn.DEATH) }
-                            +"Deaths"
-                        }
-                        th {
-                            attrs.onClickFunction = { props.onToggleColumn(SortColumn.RECOVERED) }
-                            +"Recovered"
+                    }
+                    tbody {
+                        props.entries.forEach { entry ->
+                            tr(if (entry.selected) "table-active" else null) {
+                                key = entry.name
+                                attrs.onClickFunction = { props.onToggleRow(entry.name) }
+                                td { +entry.name }
+                                td { +entry.confirmed.toString() }
+                                td { +entry.deaths.toString() }
+                                td { +entry.recovered.toString() }
+                            }
                         }
                     }
                 }
-                tbody {
-                    props.entries.forEach { entry ->
-                        tr(if (entry.selected) "table-active" else null) {
-                            key = entry.name
-                            attrs.onClickFunction = { props.onToggleRow(entry.name) }
-                            td { +entry.name }
-                            td { +entry.confirmed.toString() }
-                            td { +entry.deaths.toString() }
-                            td { +entry.recovered.toString() }
-                        }
-                    }
-                }
+            }
+            small("text-muted") {
+                +props.translation.tableHint
             }
         }
     }

@@ -1,5 +1,6 @@
 package dashboard.containers
 
+import dashboard.L10n
 import dashboard.reducers.State
 import dashboard.actions.UpdateKeyFilter
 import dashboard.actions.ToggleGroupByCountry
@@ -15,6 +16,7 @@ import redux.WrapperAction
 private interface TableFilterStateProps : RProps {
     var filter: String
     var groupByCountry: Boolean
+    var translation: L10n
 }
 
 private interface TableFilterDispatchProps : RProps {
@@ -27,6 +29,7 @@ val tableFilter: RClass<RProps> =
         { state, _ ->
             filter = state.keyFilter
             groupByCountry = state.groupByCountry
+            translation = state.translation
         },
         { dispatch, _ ->
             onChangeFilter = { newFilter ->

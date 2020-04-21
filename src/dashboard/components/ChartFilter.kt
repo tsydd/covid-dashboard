@@ -1,5 +1,6 @@
 package dashboard.components
 
+import dashboard.L10n
 import dashboard.models.Align
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType
@@ -15,6 +16,7 @@ interface ChartFilterStateProps : RProps {
     var align: Align
     var include: CovidData<Boolean>
     var total: CovidData<Int>
+    var translation: L10n
 }
 
 interface ChartFilterDispatchProps : RProps {
@@ -31,7 +33,7 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
                 attrs.defaultChecked = props.include[type]
                 attrs.onChangeFunction = { props.onToggle(type) }
             }
-            +type.label
+            +type.translate(props.translation)
             div("badge badge-$classSuffix ml-2") {
                 +"${props.total[type]}"
             }
@@ -42,7 +44,7 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
         form(classes = "form-inline mb-2 mt-2") {
             label("mr-2") {
                 div("mr-2") {
-                    +"Align"
+                    +props.translation.align
                 }
                 select("custom-select") {
                     attrs.value = props.align.name
@@ -52,7 +54,7 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
                     Align.values().forEach {
                         option {
                             attrs.value = it.name
-                            +it.title
+                            +it.translate(props.translation)
                         }
                     }
                 }
