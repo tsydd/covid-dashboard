@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="KotlinJavaScript" type="kotlin.js">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/193.6494.35/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-js.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/193.6494.35/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-js-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
