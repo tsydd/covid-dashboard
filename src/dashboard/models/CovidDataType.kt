@@ -1,9 +1,9 @@
 package dashboard.models
 
-import dashboard.L10n
-import dashboard.Translation
+import dashboard.l10n.L10n
+import dashboard.l10n.Translated
 
-enum class CovidDataType : Translation {
+enum class CovidDataType : Translated {
     CONFIRMED,
     RECOVERED,
     DEATHS,

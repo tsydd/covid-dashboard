@@ -1,4 +1,4 @@
-package dashboard
+package dashboard.utils
 
 import dashboard.actions.ToggleGroupByCountry
 import dashboard.actions.ToggleSelectedDataType

@@ -1,7 +1,7 @@
 package dashboard.components
 
-import dashboard.generatePalette
-import dashboard.toArray
+import dashboard.utils.generatePalette
+import dashboard.utils.toArray
 import libs.chartjs.*
 import react.*
 import react.dom.canvas

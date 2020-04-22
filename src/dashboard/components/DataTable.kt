@@ -1,7 +1,6 @@
 package dashboard.components
 
-import dashboard.L10n
-import dashboard.Translation
+import dashboard.l10n.L10n
 import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent

@@ -1,6 +1,6 @@
 package dashboard.containers
 
-import dashboard.L10n
+import dashboard.l10n.L10n
 import dashboard.reducers.State
 import dashboard.actions.UpdateKeyFilter
 import dashboard.actions.ToggleGroupByCountry

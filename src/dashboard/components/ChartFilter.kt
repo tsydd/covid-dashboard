@@ -1,6 +1,6 @@
 package dashboard.components
 
-import dashboard.L10n
+import dashboard.l10n.L10n
 import dashboard.models.Align
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType

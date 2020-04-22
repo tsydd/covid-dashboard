@@ -1,6 +1,6 @@
 package dashboard.components
 
-import dashboard.L10n
+import dashboard.l10n.L10n
 import kotlinx.html.InputType
 import kotlinx.html.js.onChangeFunction
 import react.*

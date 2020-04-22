@@ -1,9 +1,9 @@
 package dashboard.models
 
-import dashboard.L10n
-import dashboard.Translation
+import dashboard.l10n.L10n
+import dashboard.l10n.Translated
 
-enum class Align : Translation {
+enum class Align : Translated {
     NONE,
     FIRST_CASE,
     FIRST_10_CASES,

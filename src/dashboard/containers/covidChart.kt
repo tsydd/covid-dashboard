@@ -1,6 +1,6 @@
 package dashboard.containers
 
-import dashboard.L10n
+import dashboard.l10n.L10n
 import dashboard.components.*
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType

@@ -1,14 +1,4 @@
-package dashboard
-
-fun <T> Sequence<T>.toArray(): Array<T> {
-    val result = arrayOf<T>()
-    val dynamicResult = result.asDynamic()
-    forEach {
-        dynamicResult.push(it)
-        Unit
-    }
-    return result
-}
+package dashboard.utils
 
 private val mpn65 = listOf(
     "#ff0029",
