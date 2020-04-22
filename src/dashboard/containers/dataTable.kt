@@ -5,7 +5,6 @@ import dashboard.actions.ToggleSelectedKey
 import dashboard.actions.ToggleSort
 import dashboard.components.*
 import dashboard.components.TableEntry
-import dashboard.l10n.L10n
 import dashboard.reducers.State
 import dashboard.utils.toArray
 import libs.reselect.createSelector
@@ -13,18 +12,6 @@ import react.*
 import react.redux.rConnect
 import redux.RAction
 import redux.WrapperAction
-
-private interface DataTableStateProps : RProps {
-    var groupByCountry: Boolean
-    var entries: Array<TableEntry>
-    var sort: Sort
-    var translation: L10n
-}
-
-private interface DataTableDispatchProps : RProps {
-    var onToggleColumn: (SortColumn) -> Unit
-    var onToggleRow: (String) -> Unit
-}
 
 private fun getValueByKey(
     filter: String,

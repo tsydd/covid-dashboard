@@ -9,13 +9,18 @@ import react.dom.form
 import react.dom.input
 import react.dom.label
 
-interface TableFilterProps : RProps {
+interface TableFilterStateProps : RProps {
     var filter: String
-    var onChangeFilter: (String) -> Unit
     var groupByCountry: Boolean
-    var onToggleGroupByCountry: () -> Unit
     var translation: L10n
 }
+
+interface TableFilterDispatchProps : RProps {
+    var onChangeFilter: (String) -> Unit
+    var onToggleGroupByCountry: () -> Unit
+}
+
+interface TableFilterProps : TableFilterStateProps, TableFilterDispatchProps
 
 class TableFilter(props: TableFilterProps) : RComponent<TableFilterProps, RState>(props) {
 

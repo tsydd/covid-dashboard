@@ -39,14 +39,19 @@ class TableEntry(
     val recovered: Int
 )
 
-interface DataTableProps : RProps {
+interface DataTableStateProps : RProps {
     var groupByCountry: Boolean
     var entries: Array<TableEntry>
     var sort: Sort
     var translation: L10n
+}
+
+interface DataTableDispatchProps : RProps {
     var onToggleColumn: (SortColumn) -> Unit
     var onToggleRow: (String) -> Unit
 }
+
+interface DataTableProps : DataTableStateProps, DataTableDispatchProps
 
 class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(props) {
     override fun RBuilder.render() {
