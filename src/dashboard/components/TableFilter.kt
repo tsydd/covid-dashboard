@@ -25,7 +25,7 @@ interface TableFilterProps : TableFilterStateProps, TableFilterDispatchProps
 class TableFilter(props: TableFilterProps) : RComponent<TableFilterProps, RState>(props) {
 
     override fun RBuilder.render() {
-        form(classes = "form-inline mb-2") {
+        form(classes = "form-inline mb-2 mt-2") {
             div("form-group mr-2") {
                 input(type = InputType.search, classes = "form-control") {
                     attrs {

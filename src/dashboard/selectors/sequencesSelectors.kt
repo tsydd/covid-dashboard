@@ -39,6 +39,17 @@ val groupedSequences: (State) -> GroupedData<CovidData<Map<String, List<Int>>>> 
         )
     }
 
+val lastValues: (State) -> GroupedData<CovidData<Map<String, Int>>> =
+    createSelector(
+        groupedSequences
+    ) { sequences ->
+        sequences.map { covidData ->
+            covidData.map { map ->
+                map.mapValues { (_, list) -> list.lastOrNull() ?: 0 }
+            }
+        }
+    }
+
 val globalSequence: (State) -> CovidData<Map<String, List<Int>>> =
     createSelector(
         State::covidSequences

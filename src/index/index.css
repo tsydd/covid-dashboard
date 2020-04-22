@@ -2,3 +2,9 @@
     height: 350px;
     overflow-y: auto;
 }
+
+.covid-table-wrapper > table > thead th {
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+}

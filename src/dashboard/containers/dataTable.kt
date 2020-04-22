@@ -1,51 +1,39 @@
 package dashboard.containers
 
-import dashboard.*
 import dashboard.actions.ToggleSelectedKey
 import dashboard.actions.ToggleSort
 import dashboard.components.*
-import dashboard.components.TableEntry
 import dashboard.reducers.State
+import dashboard.selectors.lastValues
 import dashboard.utils.toArray
 import libs.reselect.createSelector
-import react.*
+import react.RClass
+import react.RProps
+import react.invoke
 import react.redux.rConnect
 import redux.RAction
 import redux.WrapperAction
 
-private fun getValueByKey(
-    filter: String,
-    groupByCountry: Boolean,
-    regionDataList: List<RegionData>
-): Map<String, Int> = regionDataList.asSequence()
-    .groupBy { it.getKey(groupByCountry) }
-    .filterKeys { filter.isEmpty() || it.toLowerCase().contains(filter) }
-    .mapValues { (_, groupedRegionData) ->
-        groupedRegionData.sumBy { it.values.last() }
-    }
-    .toMap()
-
 private val getEntries: (State) -> Array<TableEntry> =
     createSelector(
         { state -> state.keyFilter.toLowerCase() },
-        State::covidSequences,
+        { state -> lastValues(state) },
         State::groupByCountry,
         State::selectedKeys,
         State::sortDataTable
-    ) { filter, covidData, groupByCountry, selectedCountries, sort ->
-        val groupedConfirmed = getValueByKey(filter, groupByCountry, covidData.confirmed)
-        val groupedDeaths = getValueByKey(filter, groupByCountry, covidData.deaths)
-        val groupedRecovered = getValueByKey(filter, groupByCountry, covidData.recovered)
+    ) { filter, groupedLastValues, groupByCountry, selectedCountries, sort ->
+        val lastValues = groupedLastValues[groupByCountry]
 
-        sequenceOf(groupedConfirmed, groupedDeaths, groupedRecovered)
-            .flatMap { it.keys.asSequence() }
+        lastValues.confirmed.keys.asSequence()
+            .filter { filter.isEmpty() || it.toLowerCase().contains(filter) }
             .distinct()
             .map { name ->
                 TableEntry(
                     name = name,
-                    confirmed = groupedConfirmed[name] ?: 0,
-                    deaths = groupedDeaths[name] ?: 0,
-                    recovered = groupedRecovered[name] ?: 0,
+                    confirmed = lastValues.confirmed[name] ?: 0,
+                    recovered = lastValues.recovered[name] ?: 0,
+                    deaths = lastValues.deaths[name] ?: 0,
+                    active = lastValues.active[name] ?: 0,
                     selected = name in selectedCountries
                 )
             }
@@ -59,12 +47,14 @@ fun Sequence<TableEntry>.sort(sort: Sort): Sequence<TableEntry> = when (sort.ord
         SortColumn.CONFIRMED -> sortedBy { it.confirmed }
         SortColumn.RECOVERED -> sortedBy { it.recovered }
         SortColumn.DEATH -> sortedBy { it.deaths }
+        SortColumn.ACTIVE -> sortedBy { it.active }
     }
     SortOrder.DESC -> when (sort.column) {
         SortColumn.NAME -> sortedByDescending { it.name }
         SortColumn.CONFIRMED -> sortedByDescending { it.confirmed }
         SortColumn.RECOVERED -> sortedByDescending { it.recovered }
         SortColumn.DEATH -> sortedByDescending { it.deaths }
+        SortColumn.ACTIVE -> sortedByDescending { it.active }
     }
 }
 

@@ -21,9 +21,10 @@ enum class SortOrder {
 
 enum class SortColumn {
     NAME,
-    DEATH,
     RECOVERED,
-    CONFIRMED
+    CONFIRMED,
+    DEATH,
+    ACTIVE
 }
 
 data class Sort(
@@ -35,8 +36,9 @@ class TableEntry(
     val selected: Boolean,
     val name: String,
     val confirmed: Int,
+    val recovered: Int,
     val deaths: Int,
-    val recovered: Int
+    val active: Int
 )
 
 interface DataTableStateProps : RProps {
@@ -58,7 +60,7 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
         div {
             div("table-responsive covid-table-wrapper") {
                 table("table table-hover") {
-                    thead {
+                    thead("thead-light") {
                         tr {
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NAME) }
@@ -80,6 +82,10 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.RECOVERED) }
                                 +props.translation.recovered
                             }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.ACTIVE) }
+                                +props.translation.active
+                            }
                         }
                     }
                     tbody {
@@ -91,6 +97,7 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 td { +entry.confirmed.toString() }
                                 td { +entry.deaths.toString() }
                                 td { +entry.recovered.toString() }
+                                td { +entry.active.toString() }
                             }
                         }
                     }
