@@ -34,7 +34,7 @@ object Russian : L10n {
     override val countryRegion: String
         get() = "Страна/Регион"
     override val tableHint: String
-        get() = "*Список прокручивается. Нажми на строку чтобы добавить страну на график"
+        get() = "*Список прокручивается. Нажми на строку, чтобы добавить страну на график"
     override val chartTitle: String
         get() = "График с накоплением"
     override val dailyChartTitle: String
