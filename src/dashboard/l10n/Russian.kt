@@ -23,6 +23,8 @@ object Russian : L10n {
         get() = "с 100-го случая"
     override val alignFirst500Cases: String
         get() = "с 500-го случая"
+    override val alignFirst1000Cases: String
+        get() = "с 1000-го случая"
     override val searchCountry: String
         get() = "Искать страну"
     override val groupByCountry: String

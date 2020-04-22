@@ -12,6 +12,7 @@ interface L10n {
     val alignFirst50Cases: String
     val alignFirst100Cases: String
     val alignFirst500Cases: String
+    val alignFirst1000Cases: String
     val searchCountry: String
     val groupByCountry: String
     val country: String

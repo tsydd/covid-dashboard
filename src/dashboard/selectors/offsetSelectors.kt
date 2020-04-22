@@ -33,8 +33,9 @@ val offsetByKey: (State) -> Map<String, Int> =
         createFirstNCasesOffsetSelector(10),
         createFirstNCasesOffsetSelector(50),
         createFirstNCasesOffsetSelector(100),
-        createFirstNCasesOffsetSelector(500)
-    ) { align, groupByCountry, first, first10, first50, first100, first500 ->
+        createFirstNCasesOffsetSelector(500),
+        createFirstNCasesOffsetSelector(1000)
+    ) { align, groupByCountry, first, first10, first50, first100, first500, first1000 ->
         val offsets: GroupedData<Map<String, Int>> = when (align) {
             Align.NONE -> GroupedData(emptyMap())
             Align.FIRST_CASE -> first
@@ -42,6 +43,7 @@ val offsetByKey: (State) -> Map<String, Int> =
             Align.FIRST_50_CASES -> first50
             Align.FIRST_100_CASES -> first100
             Align.FIRST_500_CASES -> first500
+            Align.FIRST_1000_CASES -> first1000
         }
         offsets[groupByCountry]
     }

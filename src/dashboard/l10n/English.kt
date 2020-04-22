@@ -23,6 +23,8 @@ object English : L10n {
         get() = "From first 100 cases"
     override val alignFirst500Cases: String
         get() = "From first 500 cases"
+    override val alignFirst1000Cases: String
+        get() = "From first 1000 cases"
     override val searchCountry: String
         get() = "SearchCountry"
     override val groupByCountry: String

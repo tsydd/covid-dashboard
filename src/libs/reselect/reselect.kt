@@ -57,3 +57,15 @@ external fun <S, R1, R2, R3, R4, R5, R6, R7, T> createSelector(
     selector7: (S) -> R7,
     combiner: (R1, R2, R3, R4, R5, R6, R7) -> T
 ): (S) -> T
+
+external fun <S, R1, R2, R3, R4, R5, R6, R7, R8, T> createSelector(
+    selector1: (S) -> R1,
+    selector2: (S) -> R2,
+    selector3: (S) -> R3,
+    selector4: (S) -> R4,
+    selector5: (S) -> R5,
+    selector6: (S) -> R6,
+    selector7: (S) -> R7,
+    selector8: (S) -> R8,
+    combiner: (R1, R2, R3, R4, R5, R6, R7, R8) -> T
+): (S) -> T
