@@ -7,6 +7,7 @@ import dashboard.components.ReactChartData
 import dashboard.selectors.dailySelectedSequences
 import dashboard.selectors.offsetByKey
 import dashboard.reducers.State
+import dashboard.selectors.aspectRatio
 import libs.reselect.createSelector
 import react.RClass
 import react.RProps
@@ -31,6 +32,7 @@ val covidDailyChart: RClass<RProps> =
             type = "bar"
             data = getData(state)
             title = state.translation.dailyChartTitle
+            aspectRatio = aspectRatio(state)
         },
         { _, _ -> }
     )(CovidChart::class.js.unsafeCast<RClass<CovidChartProps>>())

@@ -25,7 +25,7 @@ class TitleOptions(
 class Options(
     val animation: AnimationOptions,
     val title: TitleOptions? = undefined,
-    val aspectRatio: Int = 7
+    val aspectRatio: Int
 )
 
 class Config(

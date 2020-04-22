@@ -20,6 +20,7 @@ interface CovidChartStateProps : RProps {
     var title: String
     var type: String
     var data: ReactChartData
+    var aspectRatio: Int
 }
 
 interface CovidChartProps : CovidChartStateProps
@@ -65,7 +66,8 @@ class CovidChart(props: CovidChartProps) : RComponent<CovidChartProps, RState>(p
                     ),
                     title = TitleOptions(
                         text = props.title
-                    )
+                    ),
+                    aspectRatio = props.aspectRatio
                 )
             )
         )

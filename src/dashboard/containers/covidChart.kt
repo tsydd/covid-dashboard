@@ -5,6 +5,7 @@ import dashboard.components.*
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType
 import dashboard.reducers.State
+import dashboard.selectors.aspectRatio
 import dashboard.selectors.offsetByKey
 import dashboard.selectors.selectedSequences
 import libs.reselect.createSelector
@@ -71,6 +72,7 @@ val covidChart: RClass<RProps> =
             type = "line"
             data = getData(state)
             title = state.translation.chartTitle
+            aspectRatio = aspectRatio(state)
         },
         { _, _ -> }
     )(CovidChart::class.js.unsafeCast<RClass<CovidChartProps>>())

@@ -4,7 +4,7 @@ import dashboard.actions.ResizeWindow
 import redux.RAction
 import kotlin.browser.window
 
-class Size(
+data class Size(
     val width: Int,
     val height: Int
 )
