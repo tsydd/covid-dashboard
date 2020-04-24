@@ -59,7 +59,7 @@ fun updateUrl(state: State, action: RAction) {
             params.set("active", state.selectedDataTypes.active.toString())
 
             window.history.pushState(null, "hello", "?$params")
-            eval("gtag('config', 'UA-34660136-2', {'page_path': '?$params'})")
+            eval("gtag('config', 'UA-34660136-2', {'page_path': '/covid-19/?$params'})")
         }
     }
 }
