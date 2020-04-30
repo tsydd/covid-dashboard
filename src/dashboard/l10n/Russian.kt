@@ -39,4 +39,12 @@ object Russian : L10n {
         get() = "График с накоплением"
     override val dailyChartTitle: String
         get() = "Изменения за сутки"
+    override val newConfirmed: String
+        get() = "Новые подтвержденные"
+    override val newRecovered: String
+        get() = "Новые вылечившиеся"
+    override val newDeaths: String
+        get() = "Новые умершие"
+    override val newActve: String
+        get() = "Новые больные"
 }

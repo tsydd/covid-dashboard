@@ -39,4 +39,12 @@ object English : L10n {
         get() = "Accumulative"
     override val dailyChartTitle: String
         get() = "Daily changes"
+    override val newConfirmed: String
+        get() = "New Confirmed"
+    override val newRecovered: String
+        get() = "New Recovered"
+    override val newDeaths: String
+        get() = "New Deaths"
+    override val newActve: String
+        get() = "New Active"
 }

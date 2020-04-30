@@ -20,4 +20,8 @@ interface L10n {
     val tableHint: String
     val chartTitle: String
     val dailyChartTitle: String
+    val newConfirmed: String
+    val newRecovered: String
+    val newDeaths: String
+    val newActve: String
 }

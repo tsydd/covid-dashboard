@@ -21,10 +21,14 @@ enum class SortOrder {
 
 enum class SortColumn {
     NAME,
-    RECOVERED,
     CONFIRMED,
-    DEATH,
-    ACTIVE
+    NEW_CONFIRMED,
+    RECOVERED,
+    NEW_RECOVERED,
+    DEATHS,
+    NEW_DEATHS,
+    ACTIVE,
+    NEW_ACTIVE,
 }
 
 data class Sort(
@@ -38,7 +42,11 @@ class TableEntry(
     val confirmed: Int,
     val recovered: Int,
     val deaths: Int,
-    val active: Int
+    val active: Int,
+    val newConfirmed: Int = 0,
+    val newRecovered: Int = 0,
+    val newDeaths: Int = 0,
+    val newActive: Int = 0
 )
 
 interface DataTableStateProps : RProps {
@@ -75,16 +83,32 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 +props.translation.confirmed
                             }
                             th {
-                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.DEATH) }
-                                +props.translation.deaths
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_CONFIRMED) }
+                                +props.translation.newConfirmed
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.RECOVERED) }
                                 +props.translation.recovered
                             }
                             th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_RECOVERED) }
+                                +props.translation.newRecovered
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.DEATHS) }
+                                +props.translation.deaths
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_DEATHS) }
+                                +props.translation.newDeaths
+                            }
+                            th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.ACTIVE) }
                                 +props.translation.active
+                            }
+                            th {
+                                attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_ACTIVE) }
+                                +props.translation.newActve
                             }
                         }
                     }
@@ -95,9 +119,13 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 attrs.onClickFunction = { props.onToggleRow(entry.name) }
                                 td { +entry.name }
                                 td { +entry.confirmed.toString() }
-                                td { +entry.deaths.toString() }
+                                td { +entry.newConfirmed.toString() }
                                 td { +entry.recovered.toString() }
+                                td { +entry.newRecovered.toString() }
+                                td { +entry.deaths.toString() }
+                                td { +entry.newDeaths.toString() }
                                 td { +entry.active.toString() }
+                                td { +entry.newActive.toString() }
                             }
                         }
                     }
