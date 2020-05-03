@@ -23,5 +23,6 @@ interface L10n {
     val newConfirmed: String
     val newRecovered: String
     val newDeaths: String
-    val newActve: String
+    val newActive: String
+    val updated: String
 }

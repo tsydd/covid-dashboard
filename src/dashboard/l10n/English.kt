@@ -45,6 +45,8 @@ object English : L10n {
         get() = "New Recovered"
     override val newDeaths: String
         get() = "New Deaths"
-    override val newActve: String
+    override val newActive: String
         get() = "New Active"
+    override val updated: String
+        get() = "Updated"
 }

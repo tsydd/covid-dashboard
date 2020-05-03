@@ -29,6 +29,7 @@ val selectedSeriesSums: (State) -> CovidData<Int> =
 val chartFilter: RClass<RProps> =
     rConnect<State, RAction, WrapperAction, RProps, ChartFilterStateProps, ChartFilterDispatchProps, ChartFilterProps>(
         { state, _ ->
+            updated = state.dates.lastOrNull()
             align = state.align
             include = state.selectedDataTypes
             total = selectedSeriesSums(state)

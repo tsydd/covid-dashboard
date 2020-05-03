@@ -45,6 +45,8 @@ object Russian : L10n {
         get() = "Новые вылечившиеся"
     override val newDeaths: String
         get() = "Новые умершие"
-    override val newActve: String
+    override val newActive: String
         get() = "Новые больные"
+    override val updated: String
+        get() = "Обновлено"
 }

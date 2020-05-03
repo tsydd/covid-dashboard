@@ -108,7 +108,7 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_ACTIVE) }
-                                +props.translation.newActve
+                                +props.translation.newActive
                             }
                         }
                     }
