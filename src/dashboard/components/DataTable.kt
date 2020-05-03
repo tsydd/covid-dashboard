@@ -1,6 +1,7 @@
 package dashboard.components
 
 import dashboard.l10n.L10n
+import dashboard.utils.toStringWithSign
 import kotlinx.html.js.onClickFunction
 import react.RBuilder
 import react.RComponent
@@ -119,13 +120,13 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 attrs.onClickFunction = { props.onToggleRow(entry.name) }
                                 td { +entry.name }
                                 td { +entry.confirmed.toString() }
-                                td { +entry.newConfirmed.toString() }
+                                td { +entry.newConfirmed.toStringWithSign() }
                                 td { +entry.recovered.toString() }
-                                td { +entry.newRecovered.toString() }
+                                td { +entry.newRecovered.toStringWithSign() }
                                 td { +entry.deaths.toString() }
-                                td { +entry.newDeaths.toString() }
+                                td { +entry.newDeaths.toStringWithSign() }
                                 td { +entry.active.toString() }
-                                td { +entry.newActive.toString() }
+                                td { +entry.newActive.toStringWithSign() }
                             }
                         }
                     }

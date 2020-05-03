@@ -4,6 +4,7 @@ import dashboard.l10n.L10n
 import dashboard.models.Align
 import dashboard.models.CovidData
 import dashboard.models.CovidDataType
+import dashboard.utils.toStringWithSign
 import kotlinx.html.InputType
 import kotlinx.html.js.onChangeFunction
 import react.RBuilder
@@ -17,6 +18,7 @@ interface ChartFilterStateProps : RProps {
     var align: Align
     var include: CovidData<Boolean>
     var total: CovidData<Int>
+    var dailyTotal: CovidData<Int>
     var translation: L10n
 }
 
@@ -36,7 +38,7 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
             }
             +type.translate(props.translation)
             div("badge badge-$classSuffix ml-2") {
-                +"${props.total[type]}"
+                +"${props.total[type]} (${props.dailyTotal[type].toStringWithSign()})"
             }
         }
     }
