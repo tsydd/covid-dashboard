@@ -14,14 +14,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
+    <meta name="description" lang="en" content="Coronavirus (COVID-19) - charts and statistics. Comparison by country">
+    <meta name="description" lang="ru" content="Коронавирус (COVID-19) - графики и статистика. Сравнение нескольких стран на одном графике">
+    <meta name="keywords" lang="en" content="coronavirus, coronovirus, covid, covid-19, dashboard, chart, statistics, compare, comparison, by country, multiple countries">
+    <meta name="keywords" lang="ru" content="коронавирус, короновирус, ковид, график, статистика, сравнение, по странам, несколько стран">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <title>Covid-19 Dashboard</title>
   </head>
   <body>
     <noscript>
-        You need to enable JavaScript to run this dashboard.app.
+        You need to enable JavaScript to run this dashboard app.
     </noscript>
-    <div id="root"></div>
+    <div class="container-fluid">
+      <div id="root"></div>
+      <div class="row">
+        <div class="col-sm">
+          <small class="text-secondary text-nowrap mr-3">
+            Data source: <a href="https://github.com/CSSEGISandData/COVID-19" class="text-dark">COVID-19 Data Repository by JHU CSSE</a>
+          </small>
+          <small class="text-secondary text-nowrap mr-3">
+            Inspired by: <a href="https://trekhleb.github.io/covid-19/" class="text-dark">COVID-19 Dashboard</a>
+          </small>
+          <small class="text-secondary text-nowrap mr-3">
+            <a href="https://github.com/tsydd/covid-dashboard/issues" class="text-dark"><i class="fas fa-bug"></i> Report Issue</a>
+          </small>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

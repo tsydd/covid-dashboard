@@ -43,6 +43,8 @@ val store = createStore<State, RAction, dynamic>(
 
 fun main() {
     require("bootstrap/dist/css/bootstrap.css")
+    require("@fortawesome/fontawesome-free/css/all.css")
+
     requireAll(require.context("src", true, js("/\\.css$/")))
 
     window.addEventListener("resize", callback = {

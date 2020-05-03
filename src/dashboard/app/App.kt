@@ -5,7 +5,7 @@ import react.RBuilder
 import react.dom.div
 
 fun RBuilder.app() =
-    div("container-fluid") {
+    div {
         chartFilter {}
         covidChart {}
         covidDailyChart {}

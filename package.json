@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@jetbrains/kotlin-extensions": "^1.0.1-pre.91",
     "@jetbrains/kotlin-react": "^16.9.0-pre.91",
     "@jetbrains/kotlin-react-dom": "^16.9.0-pre.91",
