@@ -43,7 +43,8 @@ val store = createStore<State, RAction, dynamic>(
 
 fun main() {
     require("bootstrap/dist/css/bootstrap.css")
-    require("@fortawesome/fontawesome-free/css/all.css")
+    require("@fortawesome/fontawesome-free/css/solid.css")
+    require("@fortawesome/fontawesome-free/css/fontawesome.css")
 
     requireAll(require.context("src", true, js("/\\.css$/")))
 

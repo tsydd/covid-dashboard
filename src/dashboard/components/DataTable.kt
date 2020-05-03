@@ -65,6 +65,22 @@ interface DataTableDispatchProps : RProps {
 interface DataTableProps : DataTableStateProps, DataTableDispatchProps
 
 class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(props) {
+
+    private fun RBuilder.renderSortIcon(sortColumn: SortColumn) {
+        if (props.sort.column == sortColumn) {
+            span("ml-2") {
+                when (props.sort.order) {
+                    SortOrder.ASC -> i("fas fa-sort-up") {}
+                    SortOrder.DESC -> i("fas fa-sort-down") {}
+                }
+            }
+        } else {
+            span("text-muted ml-2") {
+                i("fas fa-sort") {}
+            }
+        }
+    }
+
     override fun RBuilder.render() {
         div {
             div("table-responsive covid-table-wrapper") {
@@ -78,38 +94,47 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                                 } else {
                                     +props.translation.countryRegion
                                 }
+                                renderSortIcon(SortColumn.NAME)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.CONFIRMED) }
                                 +props.translation.confirmed
+                                renderSortIcon(SortColumn.CONFIRMED)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_CONFIRMED) }
                                 +props.translation.newConfirmed
+                                renderSortIcon(SortColumn.NEW_CONFIRMED)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.RECOVERED) }
                                 +props.translation.recovered
+                                renderSortIcon(SortColumn.RECOVERED)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_RECOVERED) }
                                 +props.translation.newRecovered
+                                renderSortIcon(SortColumn.NEW_RECOVERED)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.DEATHS) }
                                 +props.translation.deaths
+                                renderSortIcon(SortColumn.DEATHS)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_DEATHS) }
                                 +props.translation.newDeaths
+                                renderSortIcon(SortColumn.NEW_DEATHS)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.ACTIVE) }
                                 +props.translation.active
+                                renderSortIcon(SortColumn.ACTIVE)
                             }
                             th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NEW_ACTIVE) }
                                 +props.translation.newActive
+                                renderSortIcon(SortColumn.NEW_ACTIVE)
                             }
                         }
                     }
