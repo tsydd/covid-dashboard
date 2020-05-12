@@ -88,6 +88,9 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                     thead("thead-light") {
                         tr {
                             th {
+                                +"#"
+                            }
+                            th {
                                 attrs.onClickFunction = { props.onToggleColumn(SortColumn.NAME) }
                                 if (props.groupByCountry) {
                                     +props.translation.country
@@ -139,10 +142,11 @@ class DataTable(props: DataTableProps) : RComponent<DataTableProps, RState>(prop
                         }
                     }
                     tbody {
-                        props.entries.forEach { entry ->
+                        props.entries.forEachIndexed { index, entry ->
                             tr(if (entry.selected) "table-active" else null) {
                                 key = entry.name
                                 attrs.onClickFunction = { props.onToggleRow(entry.name) }
+                                td { +(index + 1).toString() }
                                 td { +entry.name }
                                 td { +entry.confirmed.toString() }
                                 td { +entry.newConfirmed.toStringWithSign() }
