@@ -14,7 +14,6 @@ import react.RState
 import react.dom.*
 
 interface ChartFilterStateProps : RProps {
-    var updated: String?
     var align: Align
     var include: CovidData<Boolean>
     var total: CovidData<Int>
@@ -45,31 +44,19 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
 
     override fun RBuilder.render() {
         form(classes = "mt-2") {
-            div("form-inline mb-2") {
-                if (props.updated != null) {
-                    div("mr-2") {
-                        +"${props.translation.updated} ${props.updated}."
-                    }
-                }
-                label("mr-2") {
-                    div("mr-2") {
-                        +props.translation.align
-                    }
-                    select("custom-select") {
-                        attrs.value = props.align.name
-                        attrs.onChangeFunction = { event ->
-                            props.onUpdateAlign(Align.valueOf(event.target!!.asDynamic().value as String))
-                        }
-                        Align.values().forEach {
-                            option {
-                                attrs.value = it.name
-                                +it.translate(props.translation)
-                            }
-                        }
-                    }
-                }
-            }
             div("form-inline") {
+                select("custom-select mr-2") {
+                    attrs.value = props.align.name
+                    attrs.onChangeFunction = { event ->
+                        props.onUpdateAlign(Align.valueOf(event.target!!.asDynamic().value as String))
+                    }
+                    Align.values().forEach {
+                        option {
+                            attrs.value = it.name
+                            +it.translate(props.translation)
+                        }
+                    }
+                }
                 renderCheckbox(CovidDataType.CONFIRMED, classSuffix = "warning")
                 renderCheckbox(CovidDataType.RECOVERED, classSuffix = "success")
                 renderCheckbox(CovidDataType.DEATHS, classSuffix = "danger")

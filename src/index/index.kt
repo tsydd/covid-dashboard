@@ -3,6 +3,7 @@ package index
 import dashboard.actions.ResizeWindow
 import dashboard.actions.UpdateCovidData
 import dashboard.app.app
+import dashboard.containers.navBar
 import dashboard.loadData
 import dashboard.utils.loadState
 import dashboard.reducers.State
@@ -60,6 +61,12 @@ fun main() {
         val covidData = loadData()
         store.dispatch(UpdateCovidData(covidData))
         Unit
+    }
+
+    render(document.getElementById("header")) {
+        provider(store) {
+            navBar {}
+        }
     }
 
     render(document.getElementById("root")) {
