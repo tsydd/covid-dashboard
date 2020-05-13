@@ -1,6 +1,7 @@
 package dashboard.l10n
 
 interface L10n {
+    val title: String
     val confirmed: String
     val recovered: String
     val deaths: String

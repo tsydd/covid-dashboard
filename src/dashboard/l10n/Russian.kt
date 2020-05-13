@@ -1,6 +1,8 @@
 package dashboard.l10n
 
 object Russian : L10n {
+    override val title: String
+        get() = "COVID-19 - графики и статистика по коронавирусу. Сравнение нескольких стран на одном графике"
     override val confirmed: String
         get() = "Подтверждено"
     override val recovered: String

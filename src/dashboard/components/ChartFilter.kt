@@ -14,6 +14,7 @@ import react.RState
 import react.dom.*
 
 interface ChartFilterStateProps : RProps {
+    var updated: String?
     var align: Align
     var include: CovidData<Boolean>
     var total: CovidData<Int>
@@ -44,8 +45,16 @@ class ChartFilter(props: ChartFilterProps) : RComponent<ChartFilterProps, RState
 
     override fun RBuilder.render() {
         form(classes = "mt-2") {
+            p("lead") {
+                +props.translation.title
+            }
+            if (props.updated != null) {
+                small("mr-2 mb-2") {
+                    +"${props.translation.updated}: ${props.updated}"
+                }
+            }
             div("form-inline") {
-                select("custom-select mr-2") {
+                select("custom-select mr-2 mb-2") {
                     attrs.value = props.align.name
                     attrs.onChangeFunction = { event ->
                         props.onUpdateAlign(Align.valueOf(event.target!!.asDynamic().value as String))
