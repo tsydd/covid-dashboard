@@ -27,6 +27,24 @@ object English : L10n {
         get() = "From first 500 cases"
     override val alignFirst1000Cases: String
         get() = "From first 1000 cases"
+    override val alignLast3Days: String
+        get() = "Last 3 days"
+    override val alignLastWeek: String
+        get() = "Last week"
+    override val alignLast2Weeks: String
+        get() = "Last 2 weeks"
+    override val alignLastMonth: String
+        get() = "Last month"
+    override val alignLast3Months: String
+        get() = "Last 3 months"
+    override val alignLast6Months: String
+        get() = "Last 6 months"
+    override val alignLastYear: String
+        get() = "Last year"
+    override val alignLast1_5Years: String
+        get() = "Last 1.5 years"
+    override val alignLast2Years: String
+        get() = "Last 2 years"
     override val searchCountry: String
         get() = "SearchCountry"
     override val groupByCountry: String

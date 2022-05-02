@@ -27,6 +27,24 @@ object Russian : L10n {
         get() = "с 500-го случая"
     override val alignFirst1000Cases: String
         get() = "с 1000-го случая"
+    override val alignLast3Days: String
+        get() = "Последние 3 дня"
+    override val alignLastWeek: String
+        get() = "Последняя неделя"
+    override val alignLast2Weeks: String
+        get() = "Последние 2 недели"
+    override val alignLastMonth: String
+        get() = "Последний месяц"
+    override val alignLast3Months: String
+        get() = "Последние 3 месяца"
+    override val alignLast6Months: String
+        get() = "Последние 6 месяцев"
+    override val alignLastYear: String
+        get() = "Последний год"
+    override val alignLast1_5Years: String
+        get() = "Последние 1.5 года"
+    override val alignLast2Years: String
+        get() = "Последние 2 года"
     override val searchCountry: String
         get() = "Искать страну"
     override val groupByCountry: String

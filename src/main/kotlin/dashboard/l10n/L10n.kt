@@ -14,6 +14,15 @@ interface L10n {
     val alignFirst100Cases: String
     val alignFirst500Cases: String
     val alignFirst1000Cases: String
+    val alignLast3Days: String
+    val alignLastWeek: String
+    val alignLast2Weeks: String
+    val alignLastMonth: String
+    val alignLast3Months: String
+    val alignLast6Months: String
+    val alignLastYear: String
+    val alignLast1_5Years: String
+    val alignLast2Years: String
     val searchCountry: String
     val groupByCountry: String
     val country: String
